@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Cloudflare上でのWorker名（GitHubの置き場所名と同じにしておく）（公開URLは https://web-practice.<あなたのサブドメイン>.workers.dev）
+  "name": "web-practice",
+  "compatibility_date": "2026-11-01",
+  // astro build で作られた dist/ をそのまま静的ファイルとして配信
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}

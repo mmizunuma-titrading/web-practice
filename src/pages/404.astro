@@ -1,0 +1,33 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="ページが見つかりません" description="お探しのページは見つかりませんでした。">
+  <section class="section">
+    <div class="container notfound">
+      <p class="notfound__code">404</p>
+      <h1 class="notfound__title">ページが見つかりません</h1>
+      <p class="lead">URLが間違っているか、ページが移動・削除された可能性があります。</p>
+      <a href="/" class="btn btn--dark">トップページへ</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .notfound {
+    text-align: center;
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+  }
+  .notfound__code {
+    font-family: var(--en);
+    font-size: clamp(4rem, 14vw, 8rem);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--gray-300);
+  }
+  .notfound__title {
+    font-size: 1.6rem;
+  }
+</style>

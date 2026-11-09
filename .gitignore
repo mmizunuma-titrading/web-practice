@@ -1,0 +1,16 @@
+# ビルド結果
+dist/
+.astro/
+
+# 依存パッケージ
+node_modules/
+
+# Cloudflare（wrangler）のローカルファイル
+.wrangler/
+.dev.vars*
+
+# ログ・環境変数・OS
+npm-debug.log*
+.env
+.env.*
+.DS_Store

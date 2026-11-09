@@ -1,0 +1,195 @@
+/* 練習商事 — 白・黒・グレーのみで構成 */
+:root {
+  --black: #111111;
+  --ink: #1f1f1f;
+  --gray-700: #4a4a4a;
+  --gray-500: #7a7a7a;
+  --gray-300: #c8c8c8;
+  --gray-200: #e2e2e2;
+  --gray-100: #f2f2f2;
+  --white: #ffffff;
+
+  --font: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", system-ui, sans-serif;
+  --en: "Helvetica Neue", Arial, sans-serif;
+  --max: 1120px;
+  --gutter: clamp(16px, 4vw, 40px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.4;
+  margin: 0;
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: clamp(64px, 10vw, 112px);
+}
+
+.section--gray {
+  background: var(--gray-100);
+}
+
+.section--dark {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* 見出し：英字ラベル＋日本語 */
+.heading {
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+.heading__en {
+  display: block;
+  font-family: var(--en);
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 8px;
+}
+
+.heading__ja {
+  font-size: clamp(1.5rem, 3.2vw, 2rem);
+}
+
+.section--dark .heading__en {
+  color: var(--gray-300);
+}
+
+.lead {
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  color: var(--gray-700);
+  max-width: 44em;
+}
+
+.section--dark .lead {
+  color: var(--gray-300);
+}
+
+/* ボタン */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 28px;
+  border: 1px solid currentColor;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn::after {
+  content: "→";
+  font-family: var(--en);
+}
+
+.btn--light {
+  color: var(--white);
+}
+
+.btn--light:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+.btn--dark {
+  color: var(--black);
+}
+
+.btn--dark:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* 表 */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 18px 16px;
+  border-bottom: 1px solid var(--gray-200);
+  vertical-align: top;
+}
+
+.table th {
+  width: 28%;
+  font-weight: 600;
+  color: var(--gray-700);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .table--stack th,
+  .table--stack td {
+    display: block;
+    width: 100%;
+  }
+  .table--stack th {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gray-500);
+  outline-offset: 3px;
+}

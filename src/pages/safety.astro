@@ -1,0 +1,395 @@
+---
+import Base from "../layouts/Base.astro";
+
+const principles = [
+  "法令および社内規程を遵守し、安全で健康的な職場をつくります。",
+  "職場に潜む危険を洗い出し、リスクを継続的に減らします。",
+  "全員参加の安全活動により、一人ひとりの安全意識を高めます。",
+  "協力会社・取引先とも連携し、サプライチェーン全体の安全を守ります。",
+];
+
+const actions = [
+  {
+    title: "危険予知活動（KY）",
+    text: "毎朝の朝礼で、その日の作業に潜む危険を全員で話し合い、対策と指差し呼称を確認します。",
+  },
+  {
+    title: "ヒヤリハット報告",
+    text: "「ヒヤリ」「ハッ」とした体験を匿名でも報告できる仕組みを整え、月例会議で全件を共有します。",
+  },
+  {
+    title: "フォークリフト安全講習",
+    text: "運転資格者を対象に年2回の実技講習を行い、構内の制限速度と歩行者動線を定期的に見直します。",
+  },
+  {
+    title: "熱中症・健康管理",
+    text: "倉庫内に温湿度計と休憩所を設置し、暑さ指数（WBGT）に応じて作業時間を調整します。",
+  },
+];
+
+const records = [
+  { year: "2022年度", lost: "1件", rate: "1.62", note: "荷降ろし時の転倒" },
+  { year: "2023年度", lost: "0件", rate: "0.00", note: "—" },
+  { year: "2024年度", lost: "0件", rate: "0.00", note: "—" },
+  { year: "2025年度", lost: "0件", rate: "0.00", note: "—" },
+];
+
+const schedule = [
+  { month: "4月", item: "新入社員 安全衛生教育" },
+  { month: "6月", item: "安全衛生 準備月間・全拠点パトロール" },
+  { month: "7月", item: "全国安全週間・熱中症対策強化" },
+  { month: "10月", item: "全国労働衛生週間・健康診断" },
+  { month: "12月", item: "年末年始 無災害運動" },
+  { month: "毎月", item: "安全衛生委員会・ヒヤリハット共有会" },
+];
+
+const org = ["代表取締役", "安全衛生委員会", "各拠点 安全責任者", "全従業員・協力会社"];
+---
+
+<Base
+  title="労働安全"
+  description="練習商事の労働安全への取り組み。安全衛生方針、重点活動、安全成績をご紹介します（Web制作練習用の架空サイト）。"
+>
+  <!-- ページ見出し -->
+  <section class="page-head">
+    <div class="container">
+      <p class="page-head__en">Occupational Safety</p>
+      <h1 class="page-head__title">労働安全</h1>
+      <p class="page-head__text">
+        「全員が、毎日、無事に帰る。」<br />
+        練習商事は、この当たり前を守るための仕組みづくりに取り組んでいます。
+      </p>
+    </div>
+  </section>
+
+  <!-- 方針 -->
+  <section class="section">
+    <div class="container">
+      <div class="heading">
+        <span class="heading__en">Policy</span>
+        <h2 class="heading__ja">安全衛生方針</h2>
+      </div>
+      <p class="lead policy-lead">
+        当社は「安全はすべてに優先する」を基本理念とし、以下の方針のもとで労働災害ゼロを目指します。
+      </p>
+      <ol class="principles">
+        {principles.map((p) => <li class="principle">{p}</li>)}
+      </ol>
+      <p class="sign">2026年4月1日　練習商事株式会社　代表取締役 見本 太郎</p>
+    </div>
+  </section>
+
+  <!-- 重点取り組み -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="heading">
+        <span class="heading__en">Actions</span>
+        <h2 class="heading__ja">重点取り組み</h2>
+      </div>
+      <ul class="actions">
+        {
+          actions.map((a, i) => (
+            <li class="action">
+              <span class="action__no">{String(i + 1).padStart(2, "0")}</span>
+              <h3 class="action__title">{a.title}</h3>
+              <p class="action__text">{a.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- 推進体制 -->
+  <section class="section">
+    <div class="container">
+      <div class="heading">
+        <span class="heading__en">Organization</span>
+        <h2 class="heading__ja">安全推進体制</h2>
+      </div>
+      <ol class="org" aria-label="安全推進体制（上から順に）">
+        {org.map((o) => <li class="org__item">{o}</li>)}
+      </ol>
+    </div>
+  </section>
+
+  <!-- 安全成績 -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="heading">
+        <span class="heading__en">Records</span>
+        <h2 class="heading__ja">安全成績</h2>
+      </div>
+      <div class="record-highlight">
+        <p class="record-highlight__label">連続無災害記録（2026年11月1日時点）</p>
+        <p class="record-highlight__value">1,200<span>日</span></p>
+      </div>
+      <div class="table-wrap">
+        <table class="table table--dark">
+          <caption class="visually-hidden">年度別の休業災害件数と度数率</caption>
+          <thead>
+            <tr>
+              <th scope="col">年度</th>
+              <th scope="col">休業災害</th>
+              <th scope="col">度数率</th>
+              <th scope="col">主な内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              records.map((r) => (
+                <tr>
+                  <th scope="row">{r.year}</th>
+                  <td>{r.lost}</td>
+                  <td>{r.rate}</td>
+                  <td>{r.note}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="note">※ 度数率＝休業災害件数 ÷ 延べ労働時間 × 100万。数値はすべて練習用の架空データです。</p>
+    </div>
+  </section>
+
+  <!-- 年間スケジュール -->
+  <section class="section">
+    <div class="container">
+      <div class="heading">
+        <span class="heading__en">Schedule</span>
+        <h2 class="heading__ja">年間の安全活動</h2>
+      </div>
+      <ul class="schedule">
+        {
+          schedule.map((s) => (
+            <li class="schedule__item">
+              <span class="schedule__month">{s.month}</span>
+              <span>{s.item}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="back">
+        <a href="/" class="btn btn--dark">トップページへ戻る</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-head {
+    background: var(--gray-100);
+    border-bottom: 1px solid var(--gray-200);
+    padding-block: clamp(64px, 10vw, 104px);
+  }
+
+  .page-head__en {
+    font-family: var(--en);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-bottom: 12px;
+  }
+
+  .page-head__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+
+  .page-head__text {
+    color: var(--gray-700);
+  }
+
+  /* 方針 */
+  .policy-lead {
+    margin-bottom: 32px;
+  }
+
+  .principles {
+    list-style: none;
+    counter-reset: p;
+    margin: 0;
+    padding: 0;
+    border-top: 2px solid var(--black);
+  }
+
+  .principle {
+    counter-increment: p;
+    display: grid;
+    grid-template-columns: 3.5em 1fr;
+    gap: 8px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--gray-200);
+    font-weight: 600;
+  }
+
+  .principle::before {
+    content: counter(p, decimal-leading-zero);
+    font-family: var(--en);
+    color: var(--gray-500);
+    font-weight: 400;
+  }
+
+  .sign {
+    margin-top: 24px;
+    text-align: right;
+    font-size: 0.88rem;
+    color: var(--gray-500);
+  }
+
+  /* 重点取り組み */
+  .actions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .action {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    padding: 28px 24px 32px;
+  }
+
+  .action__no {
+    display: inline-block;
+    font-family: var(--en);
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: var(--black);
+    color: var(--white);
+    padding: 2px 10px;
+    margin-bottom: 16px;
+  }
+
+  .action__title {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .action__text {
+    font-size: 0.92rem;
+    color: var(--gray-700);
+  }
+
+  /* 推進体制 */
+  .org {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 420px;
+    display: grid;
+    gap: 36px;
+  }
+
+  .org__item {
+    position: relative;
+    text-align: center;
+    padding: 16px;
+    border: 1px solid var(--black);
+    font-weight: 600;
+  }
+
+  .org__item:first-child {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .org__item + .org__item::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -37px;
+    width: 1px;
+    height: 36px;
+    background: var(--gray-500);
+  }
+
+  /* 安全成績 */
+  .record-highlight {
+    border: 1px solid #3a3a3a;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+
+  .record-highlight__label {
+    color: var(--gray-300);
+    font-size: 0.9rem;
+  }
+
+  .record-highlight__value {
+    font-family: var(--en);
+    font-size: clamp(3rem, 9vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .record-highlight__value span {
+    font-family: var(--font);
+    font-size: 1.2rem;
+    margin-left: 8px;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  .table--dark {
+    min-width: 520px;
+  }
+
+  .table--dark th,
+  .table--dark td {
+    border-bottom-color: #333;
+  }
+
+  .table--dark thead th {
+    color: var(--gray-500);
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--gray-500);
+  }
+
+  .table--dark tbody th {
+    color: var(--white);
+  }
+
+  .note {
+    margin-top: 16px;
+    font-size: 0.78rem;
+    color: var(--gray-500);
+  }
+
+  /* 年間スケジュール */
+  .schedule {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+    column-gap: 40px;
+    border-top: 1px solid var(--gray-200);
+  }
+
+  .schedule__item {
+    display: grid;
+    grid-template-columns: 4.5em 1fr;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .schedule__month {
+    font-weight: 700;
+  }
+
+  .back {
+    margin-top: 56px;
+    text-align: center;
+  }
+</style>

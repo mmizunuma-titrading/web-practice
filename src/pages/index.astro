@@ -1,0 +1,388 @@
+---
+import Base from "../layouts/Base.astro";
+
+const services = [
+  {
+    no: "01",
+    title: "産業資材の卸売",
+    text: "鋼材・樹脂・梱包資材など、製造現場に欠かせない資材を全国の取引先へ安定してお届けします。",
+  },
+  {
+    no: "02",
+    title: "物流・倉庫",
+    text: "自社倉庫3拠点での保管・入出庫・配送までを一貫して管理し、必要なときに必要な量を届けます。",
+  },
+  {
+    no: "03",
+    title: "海外調達",
+    text: "アジア各国の協力工場と連携し、品質検査を経た部材を適正価格で調達します。",
+  },
+];
+
+const numbers = [
+  { value: "1987", unit: "年", label: "創業" },
+  { value: "128", unit: "名", label: "従業員数" },
+  { value: "420", unit: "社", label: "取引先" },
+  { value: "1,200", unit: "日", label: "連続無災害" },
+];
+
+const news = [
+  { date: "2026.11.01", tag: "安全", title: "秋の全国労働安全週間にあわせ、全拠点で安全点検を実施しました" },
+  { date: "2026.10.15", tag: "お知らせ", title: "第二倉庫の改修工事が完了し、保管能力が1.3倍になりました" },
+  { date: "2026.09.20", tag: "採用", title: "2027年度 新卒採用の会社説明会を開催します" },
+];
+
+const profile = [
+  ["会社名", "練習商事株式会社（架空）"],
+  ["設立", "1987年4月"],
+  ["代表者", "代表取締役 見本 太郎"],
+  ["資本金", "5,000万円"],
+  ["所在地", "〒000-0000 東京都練習区見本町1-2-3"],
+  ["事業内容", "産業資材の卸売、物流・倉庫事業、海外調達"],
+];
+---
+
+<Base
+  title="練習商事株式会社"
+  description="練習商事は産業資材の卸売・物流・海外調達を手がける架空の商社です（Web制作練習用サイト）。"
+>
+  <!-- ヒーロー -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <p class="hero__en">Renshu Shoji Co., Ltd.</p>
+      <h1 class="hero__title">現場の安全を、<br />もっと簡単に。</h1>
+      <p class="hero__text">
+        練習商事は、産業資材の卸売から物流・海外調達までを担う専門商社です。<br />
+        安全を何より大切にし、ものづくりの現場を支え続けます。
+      </p>
+      <a href="/safety" class="btn btn--light">労働安全の取り組みを見る</a>
+    </div>
+    <div class="hero__grid" aria-hidden="true"></div>
+  </section>
+
+  <!-- 事業内容 -->
+  <section id="business" class="section">
+    <div class="container">
+      <div class="heading">
+        <span class="heading__en">Business</span>
+        <h2 class="heading__ja">事業内容</h2>
+      </div>
+      <ul class="services">
+        {
+          services.map((s) => (
+            <li class="service">
+              <span class="service__no">{s.no}</span>
+              <h3 class="service__title">{s.title}</h3>
+              <p class="service__text">{s.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- 数字で見る -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="heading">
+        <span class="heading__en">Numbers</span>
+        <h2 class="heading__ja">数字で見る練習商事</h2>
+      </div>
+      <dl class="numbers">
+        {
+          numbers.map((n) => (
+            <div class="number">
+              <dt class="number__label">{n.label}</dt>
+              <dd class="number__value">
+                {n.value}
+                <span class="number__unit">{n.unit}</span>
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- 労働安全への導線 -->
+  <section class="section section--dark">
+    <div class="container safety-cta">
+      <div>
+        <div class="heading">
+          <span class="heading__en">Safety First</span>
+          <h2 class="heading__ja">安全は、すべての仕事の土台です。</h2>
+        </div>
+        <p class="lead">
+          倉庫・配送の現場で働く一人ひとりが毎日無事に帰れること。それが私たちの最優先事項です。安全衛生方針と日々の取り組みをご紹介します。
+        </p>
+      </div>
+      <a href="/safety" class="btn btn--light">労働安全の取り組み</a>
+    </div>
+  </section>
+
+  <!-- お知らせ -->
+  <section class="section">
+    <div class="container">
+      <div class="heading">
+        <span class="heading__en">News</span>
+        <h2 class="heading__ja">お知らせ</h2>
+      </div>
+      <ul class="news">
+        {
+          news.map((n) => (
+            <li class="news__item">
+              <time class="news__date" datetime={n.date.replaceAll(".", "-")}>
+                {n.date}
+              </time>
+              <span class="news__tag">{n.tag}</span>
+              <p class="news__title">{n.title}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- 会社概要 -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="heading">
+        <span class="heading__en">Company</span>
+        <h2 class="heading__ja">会社概要</h2>
+      </div>
+      <table class="table table--stack">
+        <tbody>
+          {
+            profile.map(([k, v]) => (
+              <tr>
+                <th scope="row">{k}</th>
+                <td>{v}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--black);
+    color: var(--white);
+    padding-block: clamp(96px, 16vw, 168px);
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero__en {
+    font-family: var(--en);
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gray-300);
+    margin-bottom: 20px;
+  }
+
+  .hero__title {
+    font-size: clamp(2.2rem, 6.4vw, 4.2rem);
+    letter-spacing: 0.06em;
+    margin-bottom: 28px;
+  }
+
+  .hero__text {
+    color: var(--gray-300);
+    max-width: 36em;
+    margin-bottom: 40px;
+  }
+
+  /* 右側の幾何学グリッド（装飾） */
+  .hero__grid {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min(52%, 620px);
+    height: 100%;
+    background-image:
+      linear-gradient(#2a2a2a 1px, transparent 1px),
+      linear-gradient(90deg, #2a2a2a 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: linear-gradient(90deg, transparent, #000 60%);
+  }
+
+  .hero__grid::before,
+  .hero__grid::after {
+    content: "";
+    position: absolute;
+  }
+
+  .hero__grid::before {
+    right: 18%;
+    top: 22%;
+    width: 168px;
+    height: 168px;
+    background: var(--gray-700);
+  }
+
+  .hero__grid::after {
+    right: calc(18% + 112px);
+    top: calc(22% + 112px);
+    width: 112px;
+    height: 112px;
+    border: 1px solid var(--gray-300);
+  }
+
+  @media (max-width: 720px) {
+    .hero__grid {
+      width: 100%;
+      opacity: 0.45;
+    }
+  }
+
+  /* 事業内容 */
+  .services {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    border-top: 2px solid var(--black);
+  }
+
+  .service {
+    padding: 32px 28px 40px 0;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .service + .service {
+    padding-left: 28px;
+    border-left: 1px solid var(--gray-200);
+  }
+
+  @media (max-width: 860px) {
+    .service,
+    .service + .service {
+      padding-left: 0;
+      border-left: none;
+    }
+  }
+
+  .service__no {
+    font-family: var(--en);
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--gray-300);
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .service__title {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  .service__text {
+    color: var(--gray-700);
+    font-size: 0.95rem;
+  }
+
+  /* 数字 */
+  .numbers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--gray-300);
+    border: 1px solid var(--gray-300);
+    margin: 0;
+  }
+
+  @media (max-width: 720px) {
+    .numbers {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .number {
+    background: var(--white);
+    padding: 28px 24px;
+  }
+
+  .number__label {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    margin-bottom: 4px;
+  }
+
+  .number__value {
+    margin: 0;
+    font-family: var(--en);
+    font-size: clamp(2rem, 4.4vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .number__unit {
+    font-family: var(--font);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+
+  /* 安全CTA */
+  .safety-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .safety-cta .heading {
+    margin-bottom: 20px;
+  }
+
+  /* お知らせ */
+  .news {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--gray-200);
+  }
+
+  .news__item {
+    display: grid;
+    grid-template-columns: 7.5em 6em 1fr;
+    align-items: baseline;
+    gap: 8px 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .news__date {
+    font-family: var(--en);
+    color: var(--gray-500);
+    font-size: 0.9rem;
+  }
+
+  .news__tag {
+    justify-self: start;
+    font-size: 0.75rem;
+    border: 1px solid var(--gray-500);
+    padding: 1px 10px;
+    color: var(--gray-700);
+  }
+
+  @media (max-width: 600px) {
+    .news__item {
+      grid-template-columns: auto 1fr;
+    }
+    .news__title {
+      grid-column: 1 / -1;
+    }
+  }
+</style>
