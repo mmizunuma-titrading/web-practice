@@ -43,6 +43,21 @@ const schedule = [
   { month: "毎月", item: "安全衛生委員会・ヒヤリハット共有会" },
 ];
 
+const faqs = [
+  {
+    q: "協力会社の作業員も、安全教育を受けられますか？",
+    a: "はい。構内で作業する協力会社の方には、初めて入構する日に安全ルールの説明（約30分）を行い、年1回の合同安全講習にもご参加いただいています。",
+  },
+  {
+    q: "ヒヤリハットを報告すると、評価が下がりませんか？",
+    a: "下がりません。報告は匿名でもでき、報告が活発な職場はむしろ表彰の対象です。ヒヤリハットは事故を未然に防ぐための大切な情報だと考えています。",
+  },
+  {
+    q: "倉庫を見学するとき、必要な服装や持ち物はありますか？",
+    a: "歩きやすく、かかとのある靴でお越しください。ヘルメットと安全ベストは当社で用意します。構内では床に引かれた歩行者通路の内側を歩いていただきます。",
+  },
+];
+
 const org = ["代表取締役", "安全衛生委員会", "各拠点 安全責任者", "全従業員・協力会社"];
 ---
 
@@ -150,6 +165,32 @@ const org = ["代表取締役", "安全衛生委員会", "各拠点 安全責任
         </table>
       </div>
       <p class="note">※ 度数率＝休業災害件数 ÷ 延べ労働時間 × 100万。数値はすべて練習用の架空データです。</p>
+    </div>
+  </section>
+
+  <!-- よくある質問 -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="heading">
+        <span class="heading__en">FAQ</span>
+        <h2 class="heading__ja">よくある質問</h2>
+      </div>
+      <div class="faq">
+        {
+          faqs.map((f) => (
+            <details class="faq__item">
+              <summary class="faq__q">
+                <span class="faq__mark" aria-hidden="true">Q</span>
+                <span>{f.q}</span>
+              </summary>
+              <div class="faq__a">
+                <span class="faq__mark faq__mark--a" aria-hidden="true">A</span>
+                <p>{f.a}</p>
+              </div>
+            </details>
+          ))
+        }
+      </div>
     </div>
   </section>
 
@@ -362,6 +403,63 @@ const org = ["代表取締役", "安全衛生委員会", "各拠点 安全責任
   .note {
     margin-top: 16px;
     font-size: 0.78rem;
+    color: var(--gray-500);
+  }
+
+  /* よくある質問 */
+  .faq {
+    border-top: 2px solid var(--black);
+  }
+
+  .faq__item {
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .faq__q {
+    display: grid;
+    grid-template-columns: 2.2em 1fr 1.5em;
+    align-items: baseline;
+    gap: 8px;
+    padding: 20px 20px 20px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq__q::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__q::after {
+    content: "+";
+    font-family: var(--en);
+    font-size: 1.3rem;
+    line-height: 1;
+    color: var(--gray-500);
+    text-align: right;
+  }
+
+  .faq__item[open] .faq__q::after {
+    content: "−";
+  }
+
+  .faq__a {
+    display: grid;
+    grid-template-columns: 2.2em 1fr;
+    gap: 8px;
+    padding: 0 20px 24px 16px;
+    color: var(--gray-700);
+    font-size: 0.95rem;
+  }
+
+  .faq__mark {
+    font-family: var(--en);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .faq__mark--a {
     color: var(--gray-500);
   }
 
